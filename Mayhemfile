@@ -1,0 +1,6 @@
+project: rnshah9/glb-director
+target: glb-director
+
+cmds:
+  - cmd: /repo/src/glb-director/cli/glb-director-cli build-config @@ out
+    filepath: /test.json
