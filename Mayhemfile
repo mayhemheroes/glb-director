@@ -1,5 +1,5 @@
 project: rnshah9/glb-director
-target: glb-director
+target: glb-director-cli
 
 cmds:
   - cmd: /repo/src/glb-director/cli/glb-director-cli build-config @@ out
