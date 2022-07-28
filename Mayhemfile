@@ -2,5 +2,4 @@ project: glb-director
 target: glb-director-cli
 
 cmds:
-  - cmd: /repo/src/glb-director/cli/glb-director-cli build-config /test.json out
-    filepath: /test.json
+  - cmd: /glb-director-cli build-config @@ out
