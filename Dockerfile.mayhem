@@ -37,11 +37,7 @@ WORKDIR /repo/src/glb-director
 RUN make -j8
 WORKDIR /repo/src/glb-director/cli
 RUN make -j8
-RUN mkdir -p /deps
-RUN ldd /repo/src/glb-director/cli/glb-director-cli | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
-
 FROM debian:stretch as package
-
-COPY --from=builder /deps /deps
-COPY --from=builder /repo/src/glb-director/cli/glb-director-cli /repo/src/glb-director/cli/glb-director-cli
-ENV LD_LIBRARY_PATH=/deps
+RUN apt-get update 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libjansson-dev
+COPY --from=builder /repo/src/glb-director/cli/glb-director-cli /
