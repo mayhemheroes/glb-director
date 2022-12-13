@@ -1,0 +1,6 @@
+project: glb-director
+target: glb-log-info
+
+cmds:
+  - cmd: /fuzz_glb_log_info
+    libfuzzer: true
