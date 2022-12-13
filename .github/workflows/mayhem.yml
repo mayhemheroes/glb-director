@@ -59,7 +59,8 @@ jobs:
       fail-fast: false
       matrix:
         mayhemfile:
-          - mayhem/Mayhemfile
+          - mayhem/Mayhemfile_glb_log_info
+          - mayhem/Mayhemfile_glb-director-cli
 
     steps:
       - uses: actions/checkout@v3

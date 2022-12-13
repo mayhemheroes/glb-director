@@ -5,7 +5,7 @@ RUN apt-get update && apt-get -y install curl git
 
 # DPDK 
 RUN curl -s https://packagecloud.io/install/repositories/github/unofficial-dpdk-stable/script.deb.sh | bash
-RUN apt-get update && apt-get install -y build-essential dpdk dpdk-dev wget pkg-config libjansson-dev libsystemd-dev
+RUN apt-get update && apt-get install -y build-essential dpdk dpdk-dev wget pkg-config libjansson-dev libsystemd-dev clang-6.0
 
 # iptables / DKMS
 RUN apt-get update && apt-get install -y iptables-dev dkms debhelper libxtables-dev
@@ -37,7 +37,10 @@ WORKDIR /repo/src/glb-director
 RUN make -j8
 WORKDIR /repo/src/glb-director/cli
 RUN make -j8
+RUN clang-6.0 /repo/mayhem/fuzz_glb_log_info.cpp  -fsanitize=fuzzer,address -I /repo/src/glb-director -ljansson -o /fuzz
+
 FROM debian:stretch as package
 RUN apt-get update 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libjansson-dev
 COPY --from=builder /repo/src/glb-director/cli/glb-director-cli /
+COPY --from=builder /fuzz /fuzz_glb_log_info
