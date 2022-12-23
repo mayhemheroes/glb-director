@@ -37,7 +37,7 @@ WORKDIR /repo/src/glb-director
 RUN make -j8
 WORKDIR /repo/src/glb-director/cli
 RUN make -j8
-RUN clang-6.0 /repo/mayhem/fuzz_glb_log_info.cpp  -fsanitize=fuzzer,address -I /repo/src/glb-director -ljansson -o /fuzz
+RUN clang++-10 /repo/mayhem/fuzz_glb_log_info.cpp  -fsanitize=fuzzer,address -I /repo/src/glb-director -ljansson -o /fuzz
 
 FROM debian:stretch as package
 RUN apt-get update 
