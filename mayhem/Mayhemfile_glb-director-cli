@@ -1,0 +1,5 @@
+project: glb-director
+target: glb-director-cli
+
+cmds:
+  - cmd: /glb-director-cli build-config @@ out
