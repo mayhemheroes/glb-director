@@ -1,0 +1,9 @@
+project: glb-director
+target: glb-director-cli
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/glb-director-cli/testsuite
+
+cmds:
+  - cmd: /mayhem/glb-director-cli build-config @@ /tmp/forwarding-table.bin

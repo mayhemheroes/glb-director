@@ -1,0 +1,10 @@
+project: glb-director
+target: glb-log-info
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/glb-log-info/testsuite
+
+cmds:
+  - cmd: /mayhem/fuzz_glb_log_info
+    libfuzzer: true
